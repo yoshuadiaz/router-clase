@@ -1,6 +1,11 @@
 .character-item {
   display: inline-block;
-  min-width: 200px;
+  max-width: 150px;
   border: 1px solid #ccc;
   padding: 1em;
+  margin: 1em;
+}
+
+.character-item img {
+  max-width: 100%;
 }

@@ -1,37 +1,36 @@
 import React from "react"
 import axios from "axios"
-import Character from "../components/Character"
-class Home extends React.Component {
+
+class Detail extends React.Component {
   constructor() {
     super()
     this.state = {
-      characters: [],
+      detail: {},
       isLoading: false,
       hasError: false
     }
   }
 
-  async componentDidMount() {
+  async componentWillMount() {
     try {
       this.setState({ isLoading: true })
       this.setState({ hasError: false })
-      const { data } = await axios.get(
-        "https://rickandmortyapi.com/api/character/"
+      const id = this.props.match.params.id
+
+      const character = await axios.get(
+        `https://rickandmortyapi.com/api/character/${id}`
       )
 
-      const characters = data.results
-      this.setState({ characters })
+      this.setState({ detail: character.data })
       this.setState({ isLoading: false })
     } catch (error) {
       this.setState({ hasError: true })
-      // throw new Error("No se pudo manito :(")
     }
   }
+
   render() {
     return (
       <div>
-        <h1>Hola a todos</h1>
-
         {this.state.isLoading && !this.state.hasError && (
           <div className="message">
             <div className="message-body">Cargando...</div>
@@ -44,14 +43,21 @@ class Home extends React.Component {
           </div>
         )}
 
-        {!this.state.isLoading &&
-          !this.state.hasError &&
-          this.state.characters.map((char, index) => (
-            <Character key={index} data={char} />
-          ))}
+        {!this.state.isLoading && !this.state.hasError && (
+          <div className="ficha content">
+            <img src={this.state.detail.image} alt="" />
+            <h1>{this.state.detail.name}</h1>
+            <ul>
+              <li>Especie: {this.state.detail.species}</li>
+              <li>Género: {this.state.detail.gender}</li>
+            </ul>
+          </div>
+        )}
+
+        <pre>{JSON.stringify({ ...this.props, ...this.state }, null, 2)}</pre>
       </div>
     )
   }
 }
 
-export default Home
+export default Detail

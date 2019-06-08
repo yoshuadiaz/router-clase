@@ -11,6 +11,7 @@ import Home from "./screens/Home"
 import About from "./screens/About"
 import Bio from "./screens/Bio"
 import Contact from "./screens/Contact"
+import Detail from "./screens/Detail"
 
 // Tip: creative-tim.com
 
@@ -29,6 +30,7 @@ ReactDOM.render(
         to="/biografia-sentida-sentimental-y-sobervia-yo-expuesto"
       />
       <Route path="/contact" component={Contact} />
+      <Route path="/detail/:id" component={Detail} />
       <Route>
         <div className="content has-text-centered">
           <h1>404</h1>
