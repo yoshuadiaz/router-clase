@@ -1,5 +1,6 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
+import "./navbar.css"
 const Navbar = props => {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -27,13 +28,23 @@ const Navbar = props => {
 
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
-          <Link to="/" className="navbar-item">
+          <NavLink
+            exact
+            activeClassName="is-active"
+            activeStyle={{ borderBottom: "10px solid black" }}
+            to="/"
+            className="navbar-item"
+          >
             Home
-          </Link>
+          </NavLink>
 
-          <Link to="/about" className="navbar-item">
+          <NavLink
+            activeClassName="is-active"
+            to="/about"
+            className="navbar-item"
+          >
             About
-          </Link>
+          </NavLink>
         </div>
       </div>
     </nav>

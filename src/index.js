@@ -1,6 +1,10 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch as Thanos
+} from "react-router-dom"
 import Navbar from "./components/Navbar"
 
 const Home = props => {
@@ -56,7 +60,7 @@ const About = props => {
 ReactDOM.render(
   <Router>
     <Navbar />
-    <Switch>
+    <Thanos>
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route>
@@ -65,7 +69,7 @@ ReactDOM.render(
           <p>No se encontró</p>
         </div>
       </Route>
-    </Switch>
+    </Thanos>
   </Router>,
   document.getElementById("bulmatron")
 )
