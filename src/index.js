@@ -1,7 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import { BrowserRouter as Router, Route } from "react-router-dom"
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import Navbar from "./components/Navbar"
 
 const Home = props => {
@@ -54,14 +53,19 @@ const About = props => {
   )
 }
 
-// ReactDOM.render(que va a mostrar , donde)
 ReactDOM.render(
-  <div>
-    <Router>
-      <Navbar />
+  <Router>
+    <Navbar />
+    <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
-    </Router>
-  </div>,
+      <Route>
+        <div className="content has-text-centered">
+          <h1>404</h1>
+          <p>No se encontró</p>
+        </div>
+      </Route>
+    </Switch>
+  </Router>,
   document.getElementById("bulmatron")
 )
