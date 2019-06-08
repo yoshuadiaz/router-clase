@@ -45,6 +45,21 @@ const Navbar = props => {
           >
             About
           </NavLink>
+
+          <NavLink
+            className="navbar-item"
+            activeClassName="is-active"
+            to="/biografia-sentida-sentimental-y-sobervia-yo-expuesto"
+          >
+            Biografía sentida
+          </NavLink>
+          <NavLink
+            className="navbar-item"
+            activeClassName="is-active"
+            to="/contact"
+          >
+            Contacto
+          </NavLink>
         </div>
       </div>
     </nav>
